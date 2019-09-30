@@ -3,9 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
+    "eslint-config-prettier": "^6.3.0",
+    "immer": "^3.2.0",
     "react": "^16.10.1",
+    "react-app-polyfill": "^1.0.2",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2"
+    "react-redux": "^7.1.1",
+    "react-router": "^5.0.1",
+    "react-scripts": "3.1.2",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.3.2",
+    "styled-flex-component": "^3.0.0",
+    "styled-media-query": "^2.1.2",
+    "styled-normalize": "^8.0.6",
+    "underscore": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,7 +28,24 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "prettier",
+      "prettier/react"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "import/no-named-as-default": 0,
+      "import/no-named-as-default-member": 0,
+      "import/no-unresolved": 0,
+      "import/prefer-default-export": 0,
+      "no-underscore-dangle": 0,
+      "no-console": 0,
+      "react/forbid-prop-types": 0
+    },
+    "env": {
+      "browser": true
+    }
   },
   "browserslist": {
     "production": [
@@ -25,7 +56,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }
