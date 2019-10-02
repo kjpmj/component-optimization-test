@@ -28,37 +28,45 @@
 6. Functional Component Hooks
 
 - React.memo
-  PureComponent의 함수형 버전이다. Props와 State를 얕은 비교하여 같은 값이면 re-render 하지 않는다.
+
+  - PureComponent의 함수형 버전이다. Props와 State를 얕은 비교하여 같은 값이면 re-render 하지 않는다.
 
 - useState
-  함수형 컴포넌트에서 State를 사용할 수 있게끔 하는 기능이다.
+
+  - 함수형 컴포넌트에서 State를 사용할 수 있게끔 하는 기능이다.
 
 - useCallback
-  함수형 컴포넌트는 그 자체가 render 함수이기 때문에 이벤트 핸들러(Props로 넘기는 함수등...)를 어디서 만들던 간에 새로운 인스턴스를 만들게 된다. 이 때, 사용하고자 하는
-  이벤트 핸들러를 useCallback으로 감싸고 두번째 인자(Dependency List)에 [] 빈 배열을 할당하면 해당 함수는 항상 같은 인스턴스이다.
-  두번째 인자에 useState으로 만든 State나 Props를 넘기면 해당 값이 변경되었을 때, 얕은 비교를하여 다르면 새로운 인스턴스를 반환한다.
+
+  - 함수형 컴포넌트는 그 자체가 render 함수이기 때문에 이벤트 핸들러(Props로 넘기는 함수등...)를 어디서 만들던 간에 새로운 인스턴스를 만들게 된다. 이 때, 사용하고자 하는
+    이벤트 핸들러를 useCallback으로 감싸고 두번째 인자(Dependency List)에 [] 빈 배열을 할당하면 해당 함수는 항상 같은 인스턴스이다.
+  - 두번째 인자에 useState으로 만든 State나 Props를 넘기면 해당 값이 변경되었을 때, 얕은 비교를하여 다르면 새로운 인스턴스를 반환한다.
 
 - useMemo
-  Props로 ReactNode를 넘기면 항상 re-render되는 것을 막기위해 사용한다. useCallback과 마찬가지로 첫번쨰 인자에는 사용하고자 하는 함수(조건에 따른 ReactNode를 반환하는 함수), 두번째 인자로 넣어준 값이 변경되면 새로운 인스턴스를 반환하는 것도 useCallback과 같다.
+
+  - Props로 ReactNode를 넘기면 항상 re-render되는 것을 막기위해 사용한다. useCallback과 마찬가지로 첫번쨰 인자에는 사용하고자 하는 함수(조건에 따른 ReactNode를 반환하는 함수), 두번째 인자로 넣어준 값이 변경되면 새로운 인스턴스를 반환하는 것도 useCallback과 같다.
 
 - useRef
-  각 노드 인스턴스별로 값은 다르지만 이 값이 변경 될 떄마다 render가 실행될 필요가 없을 떄 사용한다.
+
+  - 각 노드 인스턴스별로 값은 다르지만 이 값이 변경 될 떄마다 render가 실행될 필요가 없을 떄 사용한다.
 
 - useEffect
-  render가 완료된 후에 호출되는 콜백이다.
-  componentDidMount와 componentDidUpdate가 실해되는 시점을 합하면 useEffect가 실행되는 시점이라고 볼 수 있다.
-  useEffect는 Data Fetching과 같은 Side Effect를 발생시킬 때 쓰는 hook이다.
-  useEffect에 넘겨준 callback에 다시 callback 함수를 리턴하면 Unmount되면서 실행된다. (componentWillUnmount)
+
+  - render가 완료된 후에 호출되는 콜백이다.
+  - componentDidMount와 componentDidUpdate가 실해되는 시점을 합하면 useEffect가 실행되는 시점이라고 볼 수 있다.
+  - useEffect는 Data Fetching과 같은 Side Effect를 발생시킬 때 쓰는 hook이다.
+  - useEffect에 넘겨준 callback에 다시 callback 함수를 리턴하면 Unmount되면서 실행된다. (componentWillUnmount)
 
 - Custom Hook
-  기존의 Hook으로 Custom Hook을 만들 수 있다.
-  중복되는 로직을 묶어서 추상화하고 재사용할 수 있다.
+
+  - 기존의 Hook으로 Custom Hook을 만들 수 있다.
+  - 중복되는 로직을 묶어서 추상화하고 재사용할 수 있다.
 
 - Rules of Hooks
-  Hook을 사용하기 위해서는 다음과 같이 반드시 지켜야 할 규칙이 있다.
 
-  Hook은 항상 컴포넌트 render 로직의 Top Level 스코프에서 호출되어야만 한다.
-  즉, Hook을 if, for문 혹은 다른 함수의 callback에서 사용하면 안된다.
-  이것은 모든 render에 hook 호출 순서가 항상 같아야 하기 떄문이다.
+  - Hook을 사용하기 위해서는 다음과 같이 반드시 지켜야 할 규칙이 있다.
 
-  Hook을 React 함수(Functional Component, Custom Hooks)가 아닌 곳에서 호출하면 안된다.
+  - Hook은 항상 컴포넌트 render 로직의 Top Level 스코프에서 호출되어야만 한다.
+    즉, Hook을 if, for문 혹은 다른 함수의 callback에서 사용하면 안된다.
+    이것은 모든 render에 hook 호출 순서가 항상 같아야 하기 떄문이다.
+
+  - Hook을 React 함수(Functional Component, Custom Hooks)가 아닌 곳에서 호출하면 안된다.
